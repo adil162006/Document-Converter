@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Converter</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+    <div class="container">
+        <h1>Document Converter</h1>
+        <div class="converter-box">
+            <div class="upload-section">
+                <input type="file" id="fileInput" accept=".pdf,.png,.xlsx,.xls,.docx,.doc" class="file-input" multiple />
+                <label for="fileInput" class="file-label">
+                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                    <span>Drop your files here or click to browse</span>
+                    <span style="font-size: 0.8em; margin-top: 0.5em;">(Supports PDF, PNG, Excel, and Word files)</span>
+                </label>
+                <div id="fileList" class="file-list"></div>
+            </div>
+            <div class="settings-panel">
+                <div class="setting-group">
+                    <label>Output Format:</label>
+                    <select id="outputFormat" class="format-select">
+                        <option value="png">PNG</option>
+                        <option value="pdf">PDF</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label>PNG Quality:</label>
+                    <div class="quality-options">
+                        <button class="quality-btn active" data-scale="1">Normal</button>
+                        <button class="quality-btn" data-scale="2">High</button>
+                        <button class="quality-btn" data-scale="4">Ultra</button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label>PDF Page Size:</label>
+                    <select id="pageSize" class="page-size-select">
+                        <option value="auto">Auto (Image Size)</option>
+                        <option value="a4">A4</option>
+                        <option value="letter">Letter</option>
+                        <option value="legal">Legal</option>
+                    </select>
+                </div>
+            </div>
+            <div id="previewContainer" class="preview-container" style="display: none;">
+                <h3>Preview</h3>
+                <div id="preview" class="preview"></div>
+            </div>
+            <div class="conversion-controls">
+                <button id="convertBtn" class="convert-btn" disabled>
+                    <i class="fas fa-exchange-alt" style="margin-right: 8px;"></i>Convert All
+                </button>
+                <div id="progressBar" class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="toast" class="toast"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';</script>
+    <script src="script.js"></script>
+</body>
+</html>
